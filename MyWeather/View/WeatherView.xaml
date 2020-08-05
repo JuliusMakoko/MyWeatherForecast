@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyWeather.View.WeatherView"
+             Title="Weather">
+    <StackLayout Padding="10" Spacing="10">
+        <Entry Text="{Binding Location}">
+            <Entry.Triggers>
+                <DataTrigger  TargetType="Entry"
+                             Binding="{Binding UseGPS}"
+                            
+                             Value="true">
+                    <Setter Property="IsEnabled" Value="false"/>
+                </DataTrigger>
+            </Entry.Triggers>
+        </Entry>
+
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Label IsVisible="False" Text="Use GPS" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand"/>
+            <Switch IsVisible="False" IsToggled="{Binding UseGPS}"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Label IsVisible="False" Text="Use Imperial" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand"/>
+            <Switch IsVisible="False" IsToggled="{Binding IsImperial}"/>
+        </StackLayout>
+
+
+        <Button Text="Get Weather" Command="{Binding GetWeatherCommand}"/>
+        <Label Text="{Binding Temp}" FontSize="24"/>
+        <Label Text="{Binding Condition}"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>
+    </StackLayout>
+</ContentPage>
+
+
+
+
+
+
+
+
+
